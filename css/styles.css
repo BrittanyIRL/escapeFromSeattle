@@ -1,0 +1,68 @@
+body {
+	margin:0;
+	padding: 0;
+	width: 100%;
+}
+
+header {
+	text-align: center;
+	position: fixed;
+	width: 100%;
+
+}
+
+h1 {
+	background-color: red;
+	padding: .5em;
+	margin: 0;
+}
+
+#memoryContainer {
+	width: 75%;
+	max-height: 300px;
+	box-model: border-box;
+	margin: 0 auto;
+	padding-top: 5em;
+	padding-left: 9%;
+}
+
+.memorySquare {
+	float: left;
+	box-sizing: inherit;
+	width: 20%;
+	height: 150px;
+	margin: 0px;
+	padding: .5px;
+	border: .5em solid black;
+	background: green;
+	cursor: pointer;
+	background-image: url('');
+
+}
+
+/*generated with jquery */
+/*.memorySquare {
+	display: none;
+	max-width: 20%;
+	max-height: 100px;
+}*/
+
+
+.roaster {
+	clear: both;
+	width: 100%;
+}
+
+.player1Stats {
+	width: 40%;
+	float: left;
+	text-align: left;
+	margin-left: 5%;
+}
+
+.player2Stats {
+	width: 40%;
+	float: right;
+	text-align: right;
+	margin-right: 5%;
+}
