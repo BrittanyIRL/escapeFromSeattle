@@ -1,3 +1,10 @@
+/*things left to do
+1)fix hide/show problem -> reversal
+3)add intro with directions
+4)add man from anotherplace walking across black lodge
+5)play again button blinking */
+
+var remainingMatches = 6; 
 $(document).ready(function(){
 	console.log("jquery loaded");
 	/*Board is random set of 15 pairs, 30 boxes
@@ -23,7 +30,6 @@ $(document).ready(function(){
 	//continue until board = 0
 var player1Score = 0; //add 1 for each match
 var player2Score = 0; //add 1 for each match	
-var remainingMatches = 15; 
 var memorySquare = $(".memorySquare"); //squares to append images to
 var playerTurn = 0; //controls turns 
 var player1 = "player1";
@@ -33,48 +39,28 @@ var memoryContainer = "#memoryContainer";
 var i = 0;
 var imageSource = [
 	"img/barnOwl.jpg",
-	"img/barredOwl.jpg",
-	"img/burrowingOwl.jpg",
 	"img/eagleOwl.jpg",
 	"img/elfOwl.jpg",
-	"img/greatGrayOwl.jpg",
 	"img/greatHornedOwl.jpg",
 	"img/longEaredOwl.jpg",
-	"img/northernHawkOwl.jpg",
 	"img/sawWhetOwl.jpg",
-	"img/shortEaredOwl.jpg",
-	"img/snowyOwl.jpg",
-	"img/spectacledOwl.jpg",
-	"img/spottedOwl.jpg",
-	"img/westernScreechOwl.jpg",
 	"img/barnOwl.jpg",
-	"img/barredOwl.jpg",
-	"img/burrowingOwl.jpg",
 	"img/eagleOwl.jpg",
 	"img/elfOwl.jpg",
-	"img/greatGrayOwl.jpg",
 	"img/greatHornedOwl.jpg",
 	"img/longEaredOwl.jpg",
-	"img/northernHawkOwl.jpg",
-	"img/sawWhetOwl.jpg",
-	"img/shortEaredOwl.jpg",
-	"img/snowyOwl.jpg",
-	"img/spectacledOwl.jpg",
-	"img/spottedOwl.jpg",
-	"img/westernScreechOwl.jpg"		
+	"img/sawWhetOwl.jpg"
+	
 	]
 	var totalImages = [];
+	var randomImages = [];
 
-// function randomizeFormula(MaxValue, MinValue) {
-// 		return Math.round(Math.random() * (MaxValue - MinValue) + MinValue);
-// 	}
 
 function randomize(o){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 }
 
-var randomImages = randomize(imageSource);
 
 //randomize images
 
@@ -83,6 +69,7 @@ var randomImages = randomize(imageSource);
 var generateImages = function() {
 	i = 0;
 	totalImages = []; //new array from randomImages
+	randomImages = randomize(imageSource);
 	for (i=0; i < randomImages.length; i ++){
 		totalImages.push(randomImages[i]);
 		var squ = $(memorySquare[i]).find("img");
@@ -91,21 +78,15 @@ var generateImages = function() {
 			squ.attr("src", randomImages[i]);
 			console.log("inside img loop");
 		}
-
-		console.log(totalImages);
+		// console.log(totalImages);
 		}
 	};
-//CLICK TIME 
-//if two imgs match
-		//-1 to board
-		//++ to player
 
 var findPair = function(){
 	//if all images are hidden, allow to show two - base on clicks
 	clicks = 0;
 	var click1 = null;
 	var click2 = null;
-	endGame();
 	//if two images match then pair + point
 	//if no match, flip again
 	//THIS NEEDS TO BE REVERSED POST TESTING
@@ -119,7 +100,7 @@ var findPair = function(){
 					click2 = $(this).hide();
 					clicks ++;
 					$(makeMatch(click1, click2));
-				}				
+				}			
 		})
 };
 
@@ -141,6 +122,7 @@ var makeMatch = function(x,y){
 			clicks = 0;
 			x = null;
 			y = null;
+			remainingMatches --;
 			if(player === player1){
 				player1Score ++;
 				$(".player1Stats p").text(player1Score);
@@ -166,46 +148,62 @@ var makeMatch = function(x,y){
 			return;
 			}
 	}
-var endGame = function(){
-	// if (remainingMatches === 0){
-	// 	$(".boardResetContainer").show();
-		$(".reset").click(function(){
-			totalImages = [];
-			randomImages = [];
-			randomImages = randomize(imageSource);
-			generateImages();
-			remainingMatches = 15;
-			player = player1;
-			player1Score = 0;
-			player2Score = 0;
-			i = 0;
-			clicks = 0;
-		})
 
-	//}
+var clearBoard = function(){
+	i = 0;
+	for (i=0; i < imageSource.length; i ++){
+		var squ = $(memorySquare[i]).find("img");
+		var attr = squ.attr("src");
+		if (squ.attr("src") != "#"){
+			squ.attr("src", "#");
+			console.log("clearBoard");
+		}
+	}
+}
+var clearPlayers = function(){
+	player1Score = 0;
+	player2Score = 0;
+	$(".player1Stats p").text(player1Score);
+	$(".player2Stats p").text(player2Score);
+}
+
+$(".container").on("mousemove", (function(){
+	if (remainingMatches === 0) {
+		console.log("remaining matches is: " + remainingMatches);
+		clearBoard();
+		findWinner();
+		$(".boardResetContainer").show();
+		$("#memoryContainer").hide();
+		remainingMatches = 6;
+		player = player1;
+		i = 0;
+		clicks = 0;
+		$(".reset").click(function(){
+			clearPlayers();
+			$(".boardResetContainer").hide();
+			$("#memoryContainer, .memorySquare, .memorySquare img, .owlImage").show();
+			generateImages();
+			})
+
+		}
+	 }));
+
+var findWinner = function(){
+	if (player1Score > player2Score){
+		$(".winner").append("Player 1, you win this time.")
+		console.log("player1 wins");
+	}
+	if (player1Score === player2Score){
+		$(".winner").append("It's a tie.")
+		console.log("tie");
+	}
+	if (player2Score > player1Score){
+		$(".winner").append("Player 2, nice memory.")
+		console.log("player2 wins");
+	}
 }
 generateImages();
 findPair();	
-endGame();
 
 });
-
-
-
-
-
-
-
-
-
-	//Hide Imgs behind div, to be revealed on click
-
-	//if player doesn't match imgs, cover the imgs back up,
-	//switch player
-	//continue until board = 0
-
-
-//reveal on click
-
-//count
 

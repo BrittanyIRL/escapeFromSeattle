@@ -1,29 +1,96 @@
+
+
 body {
 	margin:0;
 	padding: 0;
 	width: 100%;
+	font-size: 16px;
+	font-family: 'PT Sans Narrow', sans-serif;
+	background-image: url('../img/blacklodgeBG.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #00DD20;
 }
 
 header {
 	text-align: center;
-	/*position: fixed;*/
+	position: fixed;
 	width: 100%;
-
+	height: 80px;
+	margin-bottom: 0;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	-webkit-text-stroke: 1px #00DD20;
+   	color: #70382F;
+   	text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
 }
 
-h1 {
-	background-color: red;
-	padding: .5em;
+
+.player1Stats,
+.player2Stats {
+	position: fixed;
+	width: 12%;
+	height: 150px;
+	margin-top: 50px;
+	text-align: center;
+	border-radius: 50%;
+	border: 2px solid white;
+}
+
+.player1Stats h2,
+.player2Stats h2 {
+	padding-top: .75em;
+	padding-bottom: 0;
+}
+
+.player1Stats p,
+.player2Stats p {
+	font-size: 3em;
+	font-weight: 600;
+	padding: .25em auto .6em;
 	margin: 0;
+}
+.player1Stats{
+	padding: 1em 1em 3em 2em;
+	float: left;
+	left: 0;
+	margin-left: 1em;
+	background-image: url('../img/coopThumbs.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.player2Stats {
+	float: right;
+	right: 0;
+	padding: 1em 2em 3em 2em;
+	margin-right: 1.2em;
+	background-image: url('../img/coopThumbs.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+h1 {
+	background-color: none;
+	padding: 0 .5em .5em .5em;
+	margin: 0;
+	font-size: 3.8em;
+	vertical-align: top;
 }
 
 #memoryContainer {
 	width: 75%;
-	max-height: 300px;
+	/*max-height: 300px;*/
 	box-model: border-box;
 	margin: 0 auto;
 	padding-top: 5em;
-	padding-left: 9%;
+	padding-left: 13%;
 }
 
 .memorySquare {
@@ -32,37 +99,41 @@ h1 {
 	width: 20%;
 	height: 150px;
 	margin: 0px;
-	padding: .5px;
-	border: .5em solid black;
-	background: green;
+	padding: 2px;
 	cursor: pointer;
-	background-image: url('');
+	background-color: rgba(255,255,255,0.5);
 
 }
 
 /*generated with jquery */
 .memorySquare img{
 /*	display: none;*/
-	height: 50px;
-	width: 50px;
-}
-
-
-.roaster {
-	clear: both;
+	height: 150px;
 	width: 100%;
 }
 
-.player1Stats {
-	width: 40%;
-	float: left;
-	text-align: left;
-	margin-left: 5%;
+
+
+.boardResetContainer {
+	display: none;
+	position: absolute;
+	width: 100%;
+	padding-top: 150px;
+	text-align: center;
+}
+.winner {
+	font-size: 1.8em;
 }
 
-.player2Stats {
-	width: 40%;
-	float: right;
-	text-align: right;
-	margin-right: 5%;
+.boardResetContainer h2 {
+	font-size: 2em;
+}
+button {
+	width: 150px;
+	height: 50px;
+	margin: 0 auto;
+	font-size: 1.5em;
+	font-family: 'PT Sans Narrow', sans-serif;
+	color: #00DD20;
+	background-color: #70382F;
 }
