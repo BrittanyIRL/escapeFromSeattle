@@ -1,7 +1,6 @@
 /*things left to do
 BIG BUG: REMOVE ABILITY TO CLICK ON AN ALREADY SHOWN IMG
--make all owl images same sizes
--make responsive - mobile v is tiny (button size, square size (2x6), change header and players to be at top, not sides)
+
 -add man from anotherplace walking across black lodge
 */
 
@@ -85,15 +84,18 @@ var findPair = function(){
 					click1 = $(this).children().fadeIn( "slow", function() {
 					    // Animation complete
 					  });
+
 					clicks ++;
 				}
 				else if(clicks == 1){
 					click2 = $(this).children().fadeIn( "slow", function() {
 					    // Animation complete
 					  });
+					// $(this).off('click');
 					clicks ++;
 					$(makeMatch(click1, click2));
-				}			
+				}	
+					
 		})
 };
 
@@ -118,6 +120,9 @@ var makeMatch = function(x,y){
 	var yImageUrl = y.attr("src");
 		if (xImageUrl === yImageUrl){
 			clicks = 0;
+				// //remove class '.cover'
+				// $(xImageUrl).unbind('click');
+				// $(yImageUrl).unbind('click');
 			x = null;
 			y = null;
 			remainingMatches --;
@@ -134,6 +139,10 @@ var makeMatch = function(x,y){
 			}
 		else if (xImageUrl != yImageUrl){
 			console.log("no match");
+			//parent of xImageUrl and yImageUrl bind()
+			// $(".cover").bind("click", function(){
+
+			// });	
 			x.fadeOut( "slow", function() {
 			    // Animation complete
 			  });
