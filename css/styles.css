@@ -1,11 +1,8 @@
-.container {
-	display: none;
-}
-
 body {
 	margin:0;
-	padding: 0;
+	padding: 0 0 5em 0;
 	width: 100%;
+	height: 100%;
 	font-size: 16px;
 	font-family: 'PT Sans Narrow', sans-serif;
 	background-image: url('../img/blacklodgeBG.jpg');
@@ -15,11 +12,13 @@ body {
 }
 
 header {
+	display: none;
 	text-align: center;
 	position: fixed;
 	width: 100%;
-	height: 80px;
-	margin-bottom: 0;
+	top: 0;
+	/*height: 80px;*/
+	margin: 0;
 	font-weight: 700;
 	letter-spacing: 1.5px;
 	-webkit-text-stroke: 1px #00DD20;
@@ -30,8 +29,9 @@ header {
       1px -1px 0 #000,
       -1px 1px 0 #000,
        1px 1px 0 #000;
+     z-index: 99999;
 }
-
+/* Intro Page Styles */
 .introduction {
 	width: 100%;
 	height: 100%;
@@ -44,9 +44,9 @@ header {
 }
 
 .introText {
-	width: 50%;
-	margin: 3em auto 0 auto;
-	padding: 1em 3em;
+	width: 80%;
+	margin: 1em auto 0 auto;
+	padding: 1em 2em;
 	font-size: 1.4em;
 	background-color: rgba(255,255,255,0.3);
 	border-radius: 5px;
@@ -62,34 +62,36 @@ header {
 	background-color: #70382F;
 }
 
+/* Score Board */
 .player1Stats,
 .player2Stats {
-	display: none;
-	position: fixed;
-	width: 12%;
-	height: 150px;
-	margin-top: 50px;
+	display: inline-block;
+	/*position: fixed;*/
+	width: 25%;
+	max-height: 100px;
+	margin: -20px .5em .5em .5em;
 	text-align: center;
 	border-radius: 50%;
 	border: 2px solid white;
+	background-color: black;
 }
 
-.player1Stats h2,
+/*.player1Stats h2,
 .player2Stats h2 {
-	padding-top: .75em;
+	padding-top: .2em;
 	padding-bottom: 0;
-}
+}*/
 
 .player1Stats p,
 .player2Stats p {
 	font-size: 3em;
 	font-weight: 600;
-	padding: .25em auto .6em;
+	/*padding: .25em auto .6em;*/
 	margin: 0;
 }
 .player1Stats{
 	padding: 1em 1em 3em 2em;
-	float: left;
+	/*float: left;*/
 	left: 0;
 	margin-left: 1em;
 	background-image: url('../img/coopThumbs.png');
@@ -100,10 +102,10 @@ header {
 
 .player2Stats {
 	opacity: 0.3;
-	float: right;
+	/*float: right;*/
 	right: 0;
-	padding: 1em 2em 3em 2em;
-	margin-right: 1.2em;
+	padding: 1em 1em 3em 2em;
+	margin-right: 1em;
 	background-image: url('../img/WyndomEarle.png');
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -111,26 +113,36 @@ header {
 }
 h1 {
 	background-color: none;
-	padding: 0 .5em .5em .5em;
+	padding: 0 .5em 1em .5em;
 	margin: 0;
-	font-size: 3.8em;
+	font-size: 2em;
 	vertical-align: top;
 }
 
+
+/*Game Board Stylings */
+
+
+.container {
+	display: none;
+}
+
+
+
 #memoryContainer {
-	width: 75%;
-	/*max-height: 300px;*/
+	width: 90%;
+	min-height: 100%;
 	box-model: border-box;
-	margin: 0 auto;
+	margin: 180px auto 50px auto;
 	padding-top: 5em;
-	padding-left: 13%;
+	padding-left: 15%;
 }
 
 .memorySquare {
 	float: left;
 	box-sizing: inherit;
-	width: 20%;
-	height: 150px;
+	width: 40%;
+	height: 120px;
 	margin: 0px;
 	padding: 2px;
 	cursor: pointer;
@@ -138,15 +150,13 @@ h1 {
 
 }
 
-/*generated with jquery */
 .memorySquare img{
-/*	display: none;*/
-	height: 150px;
+	height: 120px;
 	width: 100%;
 }
 
 .cover {
-	height: 150px;
+	height: 120px;
 	width: 100%;
 	z-index: 1;
 	border: 2px solid black;
@@ -155,10 +165,16 @@ h1 {
 	display: none;
 	position: absolute;
 	width: 100%;
-	padding-top: 150px;
+	height: 100%;
+	padding-top: 180px;
 	text-align: center;
+	margin-top: 75px;
+	background-image: url('../img/blacklodgeBG.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
+/*Winning Page */
 .winner {
 	font-size: 1.8em;
 }
@@ -174,4 +190,130 @@ h1 {
 	font-family: 'PT Sans Narrow', sans-serif;
 	color: #00DD20;
 	background-color: rgba(112,56,47,1.0);
+}
+
+
+
+@media (min-width: 600px){
+	h1 {
+		
+		font-size: 2.8em;
+	}
+	.player1Stats,
+	.player2Stats {
+		width: 17%;
+	}
+	#memoryContainer{
+		padding-left: 9%;
+		margin-top: 15em;
+	}
+	.memorySquare {
+		width: 30%;
+		height: 130px;
+	}
+	.memorySquare img{
+		height: 130px;
+		width: 100%;
+	}
+
+	.cover {
+		height: 130px;
+		width: 100%;
+		z-index: 1;
+		border: 2px solid black;
+	}
+
+}
+
+@media (min-width: 800px) {
+	.player1Stats,
+	.player2Stats {
+		width: 120px;
+		min-height: 120px;
+	}
+	#memoryContainer{
+		padding-left: 15%;
+		margin-top: 12em;
+	}
+	.memorySquare {
+		width: 20%;
+		height: 150px;
+	}
+
+	.memorySquare img{
+		height: 150px;
+		width: 100%;
+	}
+
+	.cover {
+		height: 150px;
+		width: 100%;
+		z-index: 1;
+		border: 2px solid black;
+	}
+	h1 {
+		font-size: 3.8em;
+		margin-bottom: -.5em;
+	}
+
+		/* Score Board */
+	.player1Stats,
+	.player2Stats {
+		position: fixed;
+		width: 120px;
+		height: 120px;
+		/*margin: -20px .5em .5em .5em;*/
+		text-align: center;
+		border-radius: 50%;
+		border: 2px solid white;
+		background-color: black;
+		top: 0;
+		margin-top: 4em;
+	}
+
+	/*.player1Stats h2,
+	.player2Stats h2 {
+		padding-top: .2em;
+		padding-bottom: 0;
+	}*/
+
+	.player1Stats p,
+	.player2Stats p {
+		font-size: 3em;
+		font-weight: 600;
+		/*padding: .25em auto .6em;*/
+		margin: 0;
+	}
+	.player1Stats{
+		padding: 1em 1em 3em 2em;
+		float: left;
+		left: 0;
+		margin-left: 1em;
+		background-image: url('../img/coopThumbs.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.player2Stats {
+		opacity: 0.3;
+		float: right;
+		right: 0;
+		padding: 1em 1em 3em 2em;
+		margin-right: 1em;
+		background-image: url('../img/WyndomEarle.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	h1 {
+	
+		padding: .2em .5em 1em .5em;
+		z-index: 1;
+	}
+	#memoryContainer{
+		padding-left: 13%;
+		margin-top: 5em;
+	}
+
 }

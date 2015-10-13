@@ -51,7 +51,7 @@ $(".enter").click(function(){
 	clearPlayers();
 	$(".introduction").hide();
 	$(".container").show();
-	$(".player1Stats, .player2Stats").show();
+	$("header").show();
 		generateImages();
 	})
 
