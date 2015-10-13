@@ -63,25 +63,6 @@ header {
 	background-color: #70382F;
 }
 
-<<<<<<< HEAD
-.player1Stats,
-.player2Stats {
-	display: none;
-	position: fixed;
-	width: 12%;
-	height: 150px;
-	margin-top: 50px;
-	text-align: center;
-	border-radius: 50%;
-	border: 2px solid white;
-}
-
-.player1Stats h2,
-.player2Stats h2 {
-	padding-top: .75em;
-	padding-bottom: 0;
-}
-=======
 /* Score Board */
 .player1Stats,
 .player2Stats {
@@ -101,73 +82,38 @@ header {
 	padding-top: .2em;
 	padding-bottom: 0;
 }*/
->>>>>>> master
 
 .player1Stats p,
 .player2Stats p {
 	font-size: 3em;
 	font-weight: 600;
-<<<<<<< HEAD
-	padding: .25em auto .6em;
-=======
 	/*padding: .25em auto .6em;*/
->>>>>>> master
 	margin: 0;
 }
 .player1Stats{
 	padding: 1em 1em 3em 2em;
-<<<<<<< HEAD
-	float: left;
-	left: 0;
-	margin-left: 1em;
-	background-image: url('../img/coopThumbs.jpg');
-=======
 	/*float: left;*/
 	left: 0;
 	margin-left: 1em;
 	background-image: url('../img/coopThumbs.png');
->>>>>>> master
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 .player2Stats {
-<<<<<<< HEAD
-	float: right;
-	right: 0;
-	padding: 1em 2em 3em 2em;
-	margin-right: 1.2em;
-	background-image: url('../img/coopThumbs.jpg');
-=======
 	opacity: 0.3;
 	/*float: right;*/
 	right: 0;
 	padding: 1em 1em 3em 2em;
 	margin-right: 1em;
 	background-image: url('../img/WyndomEarle.png');
->>>>>>> master
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 h1 {
 	background-color: none;
-<<<<<<< HEAD
-	padding: 0 .5em .5em .5em;
-	margin: 0;
-	font-size: 3.8em;
-	vertical-align: top;
-}
-
-#memoryContainer {
-	width: 75%;
-	/*max-height: 300px;*/
-	box-model: border-box;
-	margin: 0 auto;
-	padding-top: 5em;
-	padding-left: 13%;
-=======
 	padding: 0 .5em 1em .5em;
 	margin: 0;
 	font-size: 2em;
@@ -191,19 +137,13 @@ h1 {
 	margin: 180px auto 50px auto;
 	padding-top: 5em;
 	padding-left: 15%;
->>>>>>> master
 }
 
 .memorySquare {
 	float: left;
 	box-sizing: inherit;
-<<<<<<< HEAD
-	width: 20%;
-	height: 150px;
-=======
 	width: 40%;
 	height: 120px;
->>>>>>> master
 	margin: 0px;
 	padding: 2px;
 	cursor: pointer;
@@ -211,40 +151,21 @@ h1 {
 
 }
 
-<<<<<<< HEAD
-/*generated with jquery */
-.memorySquare img{
-/*	display: none;*/
-	height: 150px;
-=======
 .memorySquare img{
 	height: 120px;
->>>>>>> master
 	width: 100%;
 }
 
 .cover {
-<<<<<<< HEAD
-	height: 150px;
-	width: 100%;
-	z-index: 1;
-	background-color: black;
-=======
 	height: 120px;
 	width: 100%;
 	z-index: 1;
 	border: 2px solid black;
->>>>>>> master
 }
 .boardResetContainer {
 	display: none;
 	position: absolute;
 	width: 100%;
-<<<<<<< HEAD
-	padding-top: 150px;
-	text-align: center;
-}
-=======
 	height: 100%;
 	padding-top: 180px;
 	text-align: center;
@@ -255,7 +176,6 @@ h1 {
 }
 
 /*Winning Page */
->>>>>>> master
 .winner {
 	font-size: 1.8em;
 }
@@ -264,19 +184,12 @@ h1 {
 	font-size: 2em;
 }
 .reset {
-<<<<<<< HEAD
-	width: 150px;
-=======
 	width: 200px;
->>>>>>> master
 	height: 50px;
 	margin: 0 auto;
 	font-size: 1.5em;
 	font-family: 'PT Sans Narrow', sans-serif;
 	color: #00DD20;
-<<<<<<< HEAD
-	background-color: #70382F;
-=======
 	background-color: rgba(112,56,47,1.0);
 }
 
@@ -404,5 +317,4 @@ h1 {
 		margin-top: 5em;
 	}
 
->>>>>>> master
 }

@@ -1,48 +1,15 @@
 /*things left to do
-<<<<<<< HEAD
-1)fix hide/show problem -> reversal
-2)add animation to transitions (intro, end, reload)
-3)add man from anotherplace walking across black lodge
-4)play again button blinking 
-5)make player images transparent bgs 
-6)make all owl images same sizes*/
-=======
 BIG BUG: REMOVE ABILITY TO CLICK ON AN ALREADY SHOWN IMG
 
 -add man from anotherplace walking across black lodge
 */
->>>>>>> master
 
 var remainingMatches = 6; 
 $(document).ready(function(){
 	console.log("jquery loaded");
-<<<<<<< HEAD
-	/*Board is random set of 15 pairs, 30 boxes
-	Player 1 turn lasts until the 2 clicks do not match
-	after player 1 doesn't get a match, player 2 goes
-	continue process until board = 0
-	each match gives the player +1 
-	each match subtracts 1 from board total (board total starts at 6)
-	once all matchs are made, announce winner
-	winner is determined by whichever player has more points
-	show winning image on center of screen with reset button to reset JUST board */
-
-	/*Bonus: when a match is made, show info about that owl */
-
-
-	//Generate Imgs in Divs
-	//Hide Imgs behind div, to be revealed on click
-	//if two imgs match
-		//-1 to board
-		//++ to player
-	//if player doesn't match imgs, cover the imgs back up,
-	//switch player
-	//continue until board = 0
-=======
 	
 	/*Bonus: when a match is made, show info about that owl */
 
->>>>>>> master
 var player1Score = 0; //add 1 for each match
 var player2Score = 0; //add 1 for each match	
 var memorySquare = $(".memorySquare"); //squares to append images to
@@ -83,11 +50,7 @@ $(".enter").click(function(){
 	clearPlayers();
 	$(".introduction").hide();
 	$(".container").show();
-<<<<<<< HEAD
-	$(".player1Stats, .player2Stats").show();
-=======
 	$("header").show();
->>>>>>> master
 		generateImages();
 	})
 
@@ -114,22 +77,7 @@ var findPair = function(){
 	clicks = 0;
 	var click1 = null;
 	var click2 = null;
-<<<<<<< HEAD
-	//if two images match then pair + point
-	//if no match, flip again
-	//THIS NEEDS TO BE REVERSED POST TESTING
-		$(".cover").click(function(){
-			// while (player === player1){
-				if(clicks == 0){
-					click1 = $(this).children().show();
-					clicks ++;
-				}
-				else if(clicks == 1){
-					click2 = $(this).children().show();
-					clicks ++;
-					$(makeMatch(click1, click2));
-				}			
-=======
+
 	//add if click1 and click2 are both visible, do nothing
 		$(".cover").click(function(){
 			// while (player === player1){
@@ -149,18 +97,12 @@ var findPair = function(){
 					$(makeMatch(click1, click2));
 				}	
 					
->>>>>>> master
 		})
 };
 
 var switchPlayer = function(){
 		if (playerTurn%2 === 0){
 			player = player1;
-<<<<<<< HEAD
-			console.log("player 1 turn")
-		}else {
-			player = player2;
-=======
 			//opacity 
 			$(".player1Stats").css( "opacity", 1.0 );
 			$(".player2Stats").css( "opacity", 0.3 );
@@ -169,7 +111,6 @@ var switchPlayer = function(){
 			player = player2;
 			$(".player2Stats").css( "opacity", 1.0 );
 			$(".player1Stats").css( "opacity", 0.3 );
->>>>>>> master
 			console.log("player 2 turn")
 		}
 	}
@@ -180,20 +121,14 @@ var makeMatch = function(x,y){
 	var yImageUrl = y.attr("src");
 		if (xImageUrl === yImageUrl){
 			clicks = 0;
-<<<<<<< HEAD
-=======
 				// //remove class '.cover'
 				// $(xImageUrl).unbind('click');
 				// $(yImageUrl).unbind('click');
->>>>>>> master
 			x = null;
 			y = null;
 			remainingMatches --;
 			if(player === player1){
-<<<<<<< HEAD
-=======
 				//change img src to winner for both
->>>>>>> master
 				player1Score ++;
 				$(".player1Stats p").text(player1Score);
 			}
@@ -205,10 +140,6 @@ var makeMatch = function(x,y){
 			}
 		else if (xImageUrl != yImageUrl){
 			console.log("no match");
-<<<<<<< HEAD
-			x.hide(); //CHANGE THIS TO HIDE
-			y.hide(); //CHANGE THIS TO HIDE
-=======
 			//parent of xImageUrl and yImageUrl bind()
 			// $(".cover").bind("click", function(){
 
@@ -219,7 +150,6 @@ var makeMatch = function(x,y){
 			y.fadeOut( "slow", function() {
 			    // Animation complete
 			  });
->>>>>>> master
 			yImageUrl = null;
 			xImageUrl = null;
 			x = null;
@@ -252,17 +182,10 @@ var clearPlayers = function(){
 
 $(".container").on("mousemove", (function(){
 	if (remainingMatches === 0) {
-<<<<<<< HEAD
-		console.log("remaining matches is: " + remainingMatches);
-		clearBoard();
-		findWinner();
-		$(".boardResetContainer").show();
-=======
 		$(".boardResetContainer").show();
 		console.log("remaining matches is: " + remainingMatches);
 		clearBoard();
 		findWinner();
->>>>>>> master
 		$("#memoryContainer").hide();
 		remainingMatches = 6;
 		player = player1;
@@ -271,13 +194,9 @@ $(".container").on("mousemove", (function(){
 		$(".reset").click(function(){
 			clearPlayers();
 			$(".boardResetContainer").hide();
-<<<<<<< HEAD
-			$("#memoryContainer, .memorySquare, .memorySquare img, .cover, .owlImage").show();
-=======
 			$("#memoryContainer, .memorySquare, .memorySquare img, .cover, .owlImage").fadeIn( "slow", function() {
 					    // Animation complete
 					  });
->>>>>>> master
 			generateImages();
 			})
 
@@ -298,8 +217,6 @@ var findWinner = function(){
 		console.log("player2 wins");
 	}
 }
-<<<<<<< HEAD
-=======
 
 //controls both enter and reset buttons, little animation
 var buttonAnimateIn = function(){
@@ -322,15 +239,8 @@ var buttonAnimateOut = function(){
 		})
 
 buttonAnimateOut();
->>>>>>> master
 generateImages();
 findPair();	
 
 });
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> master
