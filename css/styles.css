@@ -1,4 +1,6 @@
-
+.container {
+	display: none;
+}
 
 body {
 	margin:0;
@@ -30,9 +32,32 @@ header {
        1px 1px 0 #000;
 }
 
+.introduction {
+	width: 100%;
+	position: absolute;
+	text-align: justify;
+	margin-top: 80px;
+}
+
+.introText {
+	width: 50%;
+	margin: 0 auto;
+	font-size: 1.4em;
+}
+
+.enter {
+	width: 150px;
+	height: 50px;
+	margin: 0 auto;
+	font-size: 1.5em;
+	font-family: 'PT Sans Narrow', sans-serif;
+	color: #00DD20;
+	background-color: #70382F;
+}
 
 .player1Stats,
 .player2Stats {
+	display: none;
 	position: fixed;
 	width: 12%;
 	height: 150px;
@@ -112,8 +137,12 @@ h1 {
 	width: 100%;
 }
 
-
-
+.cover {
+	height: 150px;
+	width: 100%;
+	z-index: 1;
+	background-color: black;
+}
 .boardResetContainer {
 	display: none;
 	position: absolute;
@@ -128,7 +157,7 @@ h1 {
 .boardResetContainer h2 {
 	font-size: 2em;
 }
-button {
+.reset {
 	width: 150px;
 	height: 50px;
 	margin: 0 auto;

@@ -89,7 +89,6 @@ var generateImages = function() {
 		}
 		// console.log(totalImages);
 		}
-	$(".owlImage").hide();
 	};
 
 var findPair = function(){
@@ -100,14 +99,14 @@ var findPair = function(){
 	//if two images match then pair + point
 	//if no match, flip again
 	//THIS NEEDS TO BE REVERSED POST TESTING
-		$(".cover").click(function(){
+		$(".owlImage").click(function(){
 			// while (player === player1){
 				if(clicks == 0){
-					click1 = $(this).children().show();
+					click1 = $(this).hide();
 					clicks ++;
 				}
 				else if(clicks == 1){
-					click2 = $(this).children().show();
+					click2 = $(this).hide();
 					clicks ++;
 					$(makeMatch(click1, click2));
 				}			
@@ -191,7 +190,7 @@ $(".container").on("mousemove", (function(){
 		$(".reset").click(function(){
 			clearPlayers();
 			$(".boardResetContainer").hide();
-			$("#memoryContainer, .memorySquare, .memorySquare img, .cover, .owlImage").show();
+			$("#memoryContainer, .memorySquare, .memorySquare img, .owlImage").show();
 			generateImages();
 			})
 
