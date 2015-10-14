@@ -151,16 +151,16 @@ var makeMatch = function(x,y){
 			$('.container').append('<audio autoplay="autoplay" src="sound/amateurHour.mp3">');
 		}
 
-		if (remainingMatches === 3 && player === player1) {
+		if (remainingMatches === 4 && player === player1) {
 			$('.container').append('<audio autoplay="autoplay" src="sound/palmsItch.mp3">');
 			}
-		if (remainingMatches === 5 && player === player1) {
+		if (remainingMatches === 2 && player === player1) {
 			$('.container').append('<audio autoplay="autoplay" src="sound/coffee.mp3">');
 			}
-		if (remainingMatches === 2 && player === player2) {
+		if (remainingMatches === 5 && player === player2) {
 			$('.container').append('<audio autoplay="autoplay" src="sound/fireWalk.mp3">');
 			}
-		if (remainingMatches === 0) {
+		if (remainingMatches === 5 && player === player1) {
 			$('.container').append('<audio autoplay="autoplay" src="sound/jfk.mp3">');
 			}
 
