@@ -1,6 +1,5 @@
 /*things left to do
-BIG BUG: REMOVE ABILITY TO CLICK ON AN ALREADY SHOWN IMG
-
+- play music??? 
 -add man from anotherplace walking across black lodge
 */
 
@@ -131,9 +130,7 @@ var makeMatch = function(x,y){
 			// $(item1).attr("disabled", "disabled");
 			// $(item2).attr("disabled", "disabled");
 			$(item1).removeClass("cover");
-			console.log(item1);
 			$(item2).removeClass("cover");
-			console.log(item2);
 			x = null;
 			y = null;
 			remainingMatches --;
@@ -202,6 +199,8 @@ $(".container").on("mousemove", (function(){
 		i = 0;
 		clicks = 0;
 		$(".reset").click(function(){
+			$("#memoryContainer .memorySquare div").addClass("cover");
+			// $(item2).addClass("cover");
 			clearPlayers();
 			$(".boardResetContainer").hide();
 			$("#memoryContainer, .memorySquare, .memorySquare img, .cover, .owlImage").fadeIn( "slow", function() {
