@@ -200,6 +200,7 @@ var clearBoard = function(){
 var clearPlayers = function(){
 	player1Score = 0;
 	player2Score = 0;
+	$('.winner').text("");
 	$(".player1Stats p").text(player1Score);
 	$(".player2Stats p").text(player2Score);
 }
@@ -216,7 +217,7 @@ $(".container").on("mousemove", (function(){
 		i = 0;
 		clicks = 0;
 		$(".reset").click(function(){
-			$(".winner").append("")
+			
 			$("#memoryContainer .memorySquare div").addClass("cover");
 			// $(item2).addClass("cover");
 			clearPlayers();
