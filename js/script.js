@@ -1,5 +1,4 @@
 /*things left to do
-- play music??? 
 -add man from anotherplace walking across black lodge
 */
 
@@ -25,6 +24,12 @@ var imageSource = ["img/barnOwl.jpg", "img/eagleOwl.jpg", "img/elfOwl.jpg", "img
 var totalImages = []; //randomized array of images used in game
 var randomImages = []; //radomized array that is transfered to totalImages via for loop
 
+//theme sound to play on load 
+var introSound = $('.introduction').append('<audio autoplay="autoplay" src="sound/theme.mp3">');
+var adjustSound = introSound.find("audio");
+	adjustSound[0].volume = 0.3;
+	adjustSound[0].loop = true;
+
 function randomize(o){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
@@ -32,8 +37,9 @@ function randomize(o){
 
 //Display Game Board - intro 
 $(".enter").click(function(){
+	var quietSound = adjustSound.attr("volume", "0.2");
 	clearPlayers(); //reset board
-	$(".introduction").hide(); //hide splash page
+	$(".introduction").fadeOut( 1000);; //hide splash page
 	$(".container").show(); //show board
 	$("header").show(); //show header
 		generateImages(); //scramble board images and set
@@ -141,16 +147,33 @@ var makeMatch = function(x,y){
 			switchPlayer();
 			return;
 			}
+		if (remainingMatches === 3 && player === player2) {
+			$('.container').append('<audio autoplay="autoplay" src="sound/amateurHour.mp3">');
+		}
+
+		if (remainingMatches === 3 && player === player1) {
+			$('.container').append('<audio autoplay="autoplay" src="sound/palmsItch.mp3">');
+			}
+		if (remainingMatches === 5 && player === player1) {
+			$('.container').append('<audio autoplay="autoplay" src="sound/coffee.mp3">');
+			}
+		if (remainingMatches === 2 && player === player2) {
+			$('.container').append('<audio autoplay="autoplay" src="sound/fireWalk.mp3">');
+			}
+		if (remainingMatches === 0) {
+			$('.container').append('<audio autoplay="autoplay" src="sound/jfk.mp3">');
+			}
+
 	}
 //****** FIND WINNER ********
 //find winner - triggers only when available matches is 0
 var findWinner = function(){
 	if (player1Score > player2Score){
-		$(".winner").append("Player 1, you win this time.")
+		$(".winner").append("Player 1, you win this time.");
 		console.log("player1 wins");
 	}
 	if (player1Score === player2Score){
-		$(".winner").append("It's a tie.")
+		$(".winner").append("It's a tie.");
 		console.log("tie");
 	}
 	if (player2Score > player1Score){
@@ -223,6 +246,12 @@ var buttonAnimateOut = function(){
 	$('button').click(function(){
 		$('button').stop();
 		})
+
+//adding in some animation for the board
+//if player1 gets a point say "damn good"
+//if player2 gets a point 
+//sound from http://www.soundboard.com/sb/Twin_peaks 
+
 
 buttonAnimateOut();
 generateImages();
