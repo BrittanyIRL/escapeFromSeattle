@@ -3,60 +3,43 @@
 -add man from anotherplace walking across black lodge
 */
 
-var remainingMatches = 6; 
-var item1 = null;
-var item2 = null;
 $(document).ready(function(){
-	console.log("jquery loaded");
-	
-	/*Bonus: when a match is made, show info about that owl */
+console.log("jquery loaded");
 
-var player1Score = 0; //add 1 for each match
-var player2Score = 0; //add 1 for each match	
+var remainingMatches = 6; 
+//item1 and item2 block further clicking once pair is matched or img turned during turn
+var item1 = null; 
+var item2 = null;
+var player1Score = 0; //add 1 for each match, reset on play again
+var player2Score = 0; //add 1 for each match, reset on play again	
 var memorySquare = $(".memorySquare"); //squares to append images to
 var playerTurn = 0; //controls turns 
-var player1 = "player1";
-var player2 = "player2";
-var player = player1;
-var memoryContainer = "#memoryContainer";
-var i = 0;
+var player1 = "player1"; //tracks player1
+var player2 = "player2"; //tracks player2
+var player = player1; //tracks whose turn it is
+var memoryContainer = "#memoryContainer"; //# containing board game
+var i = 0; // i is used with several functions, all simultaneous. 
 
-var imageSource = [
-	"img/barnOwl.jpg",
-	"img/eagleOwl.jpg",
-	"img/elfOwl.jpg",
-	"img/greatHornedOwl.jpg",
-	"img/longEaredOwl.jpg",
-	"img/sawWhetOwl.jpg",
-	"img/barnOwl.jpg",
-	"img/eagleOwl.jpg",
-	"img/elfOwl.jpg",
-	"img/greatHornedOwl.jpg",
-	"img/longEaredOwl.jpg",
-	"img/sawWhetOwl.jpg"
-	
-	]
-	var totalImages = [];
-	var randomImages = [];
-// $(".memorySquare img").hide();
-// $(".owlImage").hide();
+//image array
+var imageSource = ["img/barnOwl.jpg", "img/eagleOwl.jpg", "img/elfOwl.jpg", "img/greatHornedOwl.jpg", "img/longEaredOwl.jpg", "img/sawWhetOwl.jpg", "img/barnOwl.jpg", "img/eagleOwl.jpg", "img/elfOwl.jpg", "img/greatHornedOwl.jpg", "img/longEaredOwl.jpg", "img/sawWhetOwl.jpg"] //images found on google img search
+var totalImages = []; //randomized array of images used in game
+var randomImages = []; //radomized array that is transfered to totalImages via for loop
+
 function randomize(o){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
-}
-
+} //randomize() borrowed from stackoverflow.com with gratitude - http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript 
 
 //Display Game Board - intro 
-
 $(".enter").click(function(){
-	clearPlayers();
-	$(".introduction").hide();
-	$(".container").show();
-	$("header").show();
-		generateImages();
+	clearPlayers(); //reset board
+	$(".introduction").hide(); //hide splash page
+	$(".container").show(); //show board
+	$("header").show(); //show header
+		generateImages(); //scramble board images and set
 	})
 
-//Generate Imgs in Divs
+//Generate board images 
 var generateImages = function() {
 	i = 0;
 	totalImages = []; //new array from randomImages
@@ -68,27 +51,25 @@ var generateImages = function() {
 		if (squ.attr("src") === "#"){
 			squ.attr("src", randomImages[i]);
 			console.log("inside img loop");
-		}
-		// console.log(totalImages);
+			}
 		}
 	$(".owlImage").hide();
 	};
 
+//****** PLAY GAME ********
+//find matches, if no match reset both images to hide and start next turn
 var findPair = function(){
-	//if all images are hidden, allow to show two - base on clicks
 	clicks = 0;
 	var click1 = null;
 	var click2 = null;
 	//add if click1 and click2 are both visible, do nothing
 		$("#memoryContainer").on("click", ".cover", (function(){
-
-			// while (player === player1){
 				if(clicks == 0){
 					item1 = $(this)[0];
 					click1 = $(this).children().fadeIn( "slow", function() {
 					    // Animation complete
 					  });
-
+					$(item1).removeClass("cover"); //prevents double click
 					clicks ++;
 				}
 				else if(clicks == 1){
@@ -96,19 +77,17 @@ var findPair = function(){
 					click2 = $(this).children().fadeIn( "slow", function() {
 					    // Animation complete
 					  });
-					// $(this).off('click');
 					clicks ++;
 					$(makeMatch(click1, click2));
-				}	
-					
-		})
-)
-	}
+				}		
+		})// end function within click
+		) //end click function
+	}//end findPair 
 
+//control fade of whose turn it is
 var switchPlayer = function(){
 		if (playerTurn%2 === 0){
 			player = player1;
-			//opacity 
 			$(".player1Stats").css( "opacity", 1.0 );
 			$(".player2Stats").css( "opacity", 0.3 );
 			console.log("player 1 turn")
@@ -120,15 +99,12 @@ var switchPlayer = function(){
 		}
 	}
 
-
+//match function - if both img src are the same, match is made and player who matched is tracked. Otherwise, no match and imgs turn back over
 var makeMatch = function(x,y){
 	var xImageUrl = x.attr("src");
 	var yImageUrl = y.attr("src");
 		if (xImageUrl === yImageUrl){
 			clicks = 0;
-			// $('div', this).removeClass("cover");
-			// $(item1).attr("disabled", "disabled");
-			// $(item2).attr("disabled", "disabled");
 			$(item1).removeClass("cover");
 			$(item2).removeClass("cover");
 			x = null;
@@ -147,10 +123,7 @@ var makeMatch = function(x,y){
 			}
 		else if (xImageUrl != yImageUrl){
 			console.log("no match");
-			//parent of xImageUrl and yImageUrl bind()
-			// $(".cover").bind("click", function(){
-
-			// });	
+			$(item1).addClass("cover");
 			x.fadeOut( "slow", function() {
 			    // Animation complete
 			  });
@@ -168,7 +141,24 @@ var makeMatch = function(x,y){
 			return;
 			}
 	}
-
+//****** FIND WINNER ********
+//find winner - triggers only when available matches is 0
+var findWinner = function(){
+	if (player1Score > player2Score){
+		$(".winner").append("Player 1, you win this time.")
+		console.log("player1 wins");
+	}
+	if (player1Score === player2Score){
+		$(".winner").append("It's a tie.")
+		console.log("tie");
+	}
+	if (player2Score > player1Score){
+		$(".winner").append("Player 2, nice memory.")
+		console.log("player2 wins");
+	}
+}
+//****** RESET********
+//clear board function to prep for play again, called within .container mousemove
 var clearBoard = function(){
 	i = 0;
 	for (i=0; i < imageSource.length; i ++){
@@ -209,24 +199,10 @@ $(".container").on("mousemove", (function(){
 			generateImages();
 			})
 
-		}
-	 }));
+		} //end if statement
+	 })); // end mousemove
 
-var findWinner = function(){
-	if (player1Score > player2Score){
-		$(".winner").append("Player 1, you win this time.")
-		console.log("player1 wins");
-	}
-	if (player1Score === player2Score){
-		$(".winner").append("It's a tie.")
-		console.log("tie");
-	}
-	if (player2Score > player1Score){
-		$(".winner").append("Player 2, nice memory.")
-		console.log("player2 wins");
-	}
-}
-
+//****** FLAIR ********
 //controls both enter and reset buttons, little animation
 var buttonAnimateIn = function(){
 	$("button").animate({ 
