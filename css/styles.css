@@ -156,6 +156,13 @@ h1 {
 	width: 100%;
 }
 
+.cover {
+		height: 120px;
+		width: 100%;
+		z-index: 1;
+		border: 2px solid black;
+	}
+
 /*#memoryContainer div{
 	height: 120px;
 	width: 100%;
