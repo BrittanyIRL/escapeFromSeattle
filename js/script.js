@@ -169,7 +169,7 @@ var makeMatch = function(x,y){
 //find winner - triggers only when available matches is 0
 var findWinner = function(){
 	if (player1Score > player2Score){
-		$(".winner").append("Player 1, you win this time.");
+		$(".winner").append("Special Agent Dale Cooper wins this round");
 		console.log("player1 wins");
 	}
 	if (player1Score === player2Score){
@@ -177,7 +177,7 @@ var findWinner = function(){
 		console.log("tie");
 	}
 	if (player2Score > player1Score){
-		$(".winner").append("Player 2, nice memory.")
+		$(".winner").append("The Man From Another Place wins this round")
 		console.log("player2 wins");
 	}
 }
