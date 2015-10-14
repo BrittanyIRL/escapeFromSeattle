@@ -213,9 +213,11 @@ $(".container").on("mousemove", (function(){
 		i = 0;
 		clicks = 0;
 		$(".reset").click(function(){
+			$(".winner").append("")
 			$("#memoryContainer .memorySquare div").addClass("cover");
 			// $(item2).addClass("cover");
 			clearPlayers();
+
 			$(".boardResetContainer").hide();
 			$("#memoryContainer, .memorySquare, .memorySquare img, .cover, .owlImage").fadeIn( "slow", function() {
 					    // Animation complete
