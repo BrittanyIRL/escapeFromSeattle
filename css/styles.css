@@ -32,6 +32,10 @@ header {
        1px 1px 0 #000;
      z-index: 99999;
 }
+
+button:focus {
+	outline: none;
+}
 /* Intro Page Styles */
 .introduction {
 	width: 100%;
@@ -204,7 +208,11 @@ h1 {
 	background-color: rgba(112,56,47,1.0);
 }
 
-
+footer {
+	display: block;
+	bottom:0;
+	background-color: red;
+}
 
 @media (min-width: 600px){
 	h1 {
