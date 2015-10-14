@@ -5,6 +5,8 @@ BIG BUG: REMOVE ABILITY TO CLICK ON AN ALREADY SHOWN IMG
 */
 
 var remainingMatches = 6; 
+var item1 = null;
+var item2 = null;
 $(document).ready(function(){
 	console.log("jquery loaded");
 	
@@ -19,6 +21,7 @@ var player2 = "player2";
 var player = player1;
 var memoryContainer = "#memoryContainer";
 var i = 0;
+
 var imageSource = [
 	"img/barnOwl.jpg",
 	"img/eagleOwl.jpg",
@@ -78,9 +81,11 @@ var findPair = function(){
 	var click1 = null;
 	var click2 = null;
 	//add if click1 and click2 are both visible, do nothing
-		$(".cover").click(function(){
+		$("#memoryContainer").on("click", ".cover", (function(){
+
 			// while (player === player1){
 				if(clicks == 0){
+					item1 = $(this)[0];
 					click1 = $(this).children().fadeIn( "slow", function() {
 					    // Animation complete
 					  });
@@ -88,6 +93,7 @@ var findPair = function(){
 					clicks ++;
 				}
 				else if(clicks == 1){
+					item2 = $(this)[0];
 					click2 = $(this).children().fadeIn( "slow", function() {
 					    // Animation complete
 					  });
@@ -97,7 +103,8 @@ var findPair = function(){
 				}	
 					
 		})
-};
+)
+	}
 
 var switchPlayer = function(){
 		if (playerTurn%2 === 0){
@@ -120,9 +127,13 @@ var makeMatch = function(x,y){
 	var yImageUrl = y.attr("src");
 		if (xImageUrl === yImageUrl){
 			clicks = 0;
-				// //remove class '.cover'
-				// $(xImageUrl).unbind('click');
-				// $(yImageUrl).unbind('click');
+			// $('div', this).removeClass("cover");
+			// $(item1).attr("disabled", "disabled");
+			// $(item2).attr("disabled", "disabled");
+			$(item1).removeClass("cover");
+			console.log(item1);
+			$(item2).removeClass("cover");
+			console.log(item2);
 			x = null;
 			y = null;
 			remainingMatches --;
