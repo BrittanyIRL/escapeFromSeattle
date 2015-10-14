@@ -1,4 +1,4 @@
-# twinpeaksgame
+# A twin peaks based game
 The Owls Are Not What They Seem
 
 
