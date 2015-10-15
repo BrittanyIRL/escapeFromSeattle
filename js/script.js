@@ -228,7 +228,6 @@ $(".container").on("mousemove", (function(){
 					  });
 			generateImages();
 			})
-
 		} //end if statement
 	 })); // end mousemove
 
@@ -252,16 +251,7 @@ var buttonAnimateOut = function(){
 	$('button').click(function(){
 		$('button').stop();
 		})
-
-//adding in some animation for the board
-//if player1 gets a point say "damn good"
-//if player2 gets a point 
-//sound from http://www.soundboard.com/sb/Twin_peaks 
-
-
 buttonAnimateOut();
 generateImages();
 findPair();	
-
 });
-

@@ -6,7 +6,7 @@ This is a game of memory built for 2 players with jquery, javascript, css3, html
 
 Issues mostly occur when the squares are clicked too fast and there's not enough time to process if two match before a third square is clicked. 
 
-Next steps for this project would be to add in more animation on win, and track winners for rounds - holding that data true when you refresh the board, and of course, refactoring the code further so that it is shorter. 
+Next steps for this project would be to add in more animation on win, and track winners for rounds - holding that data true when you refresh the board, adding a stop music button, and of course, refactoring the code further so that it is shorter. 
 
 
 This game is based on the early 1990s tv show, Twin Peaks. The owls are a motif in the second season of the show. 

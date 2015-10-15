@@ -252,16 +252,16 @@ footer {
 	}
 	.memorySquare {
 		width: 20%;
-		height: 150px;
+		min-height: 150px;
 	}
 
 	.memorySquare img{
-		height: 150px;
+		min-height: 150px;
 		width: 100%;
 	}
 
 	.cover {
-		height: 150px;
+		min-height: 150px;
 		width: 100%;
 		z-index: 1;
 		border: 2px solid black;
